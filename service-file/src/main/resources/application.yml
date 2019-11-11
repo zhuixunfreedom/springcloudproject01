@@ -1,0 +1,41 @@
+server:
+  port: 9004
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:9000/eureka
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+spring:
+  servlet:
+    multipart:
+#    -1表示无限制
+      max-file-size: 50MB
+      max-request-size: 100MB
+  application:
+    name: service-file
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    #JDBC\u57FA\u672C\u914D\u7F6E
+      url: jdbc:mysql://127.0.0.1:3306/test?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8&useSSL=false
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: root
+      password: root
+    #\u8FDE\u63A5\u6C60\u7C7B\u578B\u4EE5\u53CA\u76F8\u5173\u914D\u7F6E
+    #  Druid\u529F\u80FD\u6700\u597D\uFF0C\u8D44\u6599\u8F83\u591A
+      type: com.alibaba.druid.pool.DruidDataSource
+      druid:
+        stat-view-servlet:
+          url-pattern: /static/**
+  jpa:
+      show-sql: true
+# \u8BBE\u7F6E\u65F6\u95F4\u683C\u5F0F
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+
+
+
+

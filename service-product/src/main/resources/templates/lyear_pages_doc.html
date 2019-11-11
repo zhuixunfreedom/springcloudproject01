@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml" >
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>文档列表 - 光年(Light Year Admin)后台管理系统模板</title>
+<link rel="icon" href="favicon.ico" type="image/ico">
+<meta name="keywords" content="LightYear,光年,后台模板,后台管理系统,光年HTML模板">
+<meta name="description" content="LightYear是一个基于Bootstrap v3.3.7的后台管理系统的HTML模板。">
+<meta name="author" content="yinqi">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/materialdesignicons.min.css" rel="stylesheet">
+<link href="css/style.min.css" rel="stylesheet">
+  <script type="text/javascript">
+
+//      $(function () {
+//        }
+
+  </script>
+</head>
+  
+<body>
+<div class="lyear-layout-web">
+  <div class="lyear-layout-container">
+    <!--左侧导航-->
+    <aside class="lyear-layout-sidebar">
+
+      <!-- logo -->
+      <div id="logo" class="sidebar-header">
+        <a href="index.html"><img src="images/logo-sidebar.png" title="LightYear" alt="LightYear" /></a>
+      </div>
+      <div class="lyear-layout-sidebar-scroll">
+
+        <nav class="sidebar-main">
+          <ul class="nav nav-drawer">
+
+
+            <!--自定义添加模块-->
+            <li class="nav-item nav-item-has-subnav active open">
+              <a href="javascript:void(0)"><i class="mdi mdi-file-outline"></i> 自定义模块</a>
+              <ul class="nav nav-subnav">
+                <li class="active"> <a href="../product/page">商品列表</a> </li>
+                <li> <a href="../function/page">功能列表</a> </li>
+                <li> <a href="../file/page">上传/下载</a> </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="sidebar-footer">
+          <p class="copyright">Copyright &copy; 2019. <a target="_blank" href="http://lyear.itshubao.com">IT书包</a> All rights reserved.</p>
+        </div>
+      </div>
+
+    </aside>
+    <!--End 左侧导航-->
+
+    <!--头部信息-->
+    <header class="lyear-layout-header">
+
+      <nav class="navbar navbar-default">
+        <div class="topbar">
+
+          <div class="topbar-left">
+            <div class="lyear-aside-toggler">
+              <span class="lyear-toggler-bar"></span>
+              <span class="lyear-toggler-bar"></span>
+              <span class="lyear-toggler-bar"></span>
+            </div>
+            <span class="navbar-page-title"> 自定义模块 - 商品列表 </span>
+          </div>
+
+          <ul class="topbar-right">
+            <li class="dropdown dropdown-profile">
+              <a href="javascript:void(0)" data-toggle="dropdown">
+                <img class="img-avatar img-avatar-48 m-r-10" src="images/users/avatar.jpg" alt="笔下光年" />
+                <span>笔下光年 <span class="caret"></span></span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-right">
+                <li> <a href="lyear_pages_profile.html"><i class="mdi mdi-account"></i> 个人信息</a> </li>
+                <li> <a href="lyear_pages_edit_pwd.html"><i class="mdi mdi-lock-outline"></i> 修改密码</a> </li>
+                <li> <a href="javascript:void(0)"><i class="mdi mdi-delete"></i> 清空缓存</a></li>
+                <li class="divider"></li>
+                <li> <a href="lyear_pages_login.html"><i class="mdi mdi-logout-variant"></i> 退出登录</a> </li>
+              </ul>
+            </li>
+            <!--切换主题配色-->
+            <li class="dropdown dropdown-skin" id="themeColor">
+              <span data-toggle="dropdown" class="icon-palette"><i class="mdi mdi-palette"></i></span>
+              <ul class="dropdown-menu dropdown-menu-right" data-stopPropagation="true">
+                <li class="drop-title"><p>主题</p></li>
+                <li class="drop-skin-li clearfix">
+                  <span class="inverse">
+                    <input type="radio" name="site_theme" value="default" id="site_theme_1" checked>
+                    <label for="site_theme_1"></label>
+                  </span>
+                  <span>
+                    <input type="radio" name="site_theme" value="dark" id="site_theme_2">
+                    <label for="site_theme_2"></label>
+                  </span>
+                  <span>
+                    <input type="radio" name="site_theme" value="translucent" id="site_theme_3">
+                    <label for="site_theme_3"></label>
+                  </span>
+                </li>
+                <li class="drop-title"><p>LOGO</p></li>
+                <li class="drop-skin-li clearfix">
+                  <span class="inverse">
+                    <input type="radio" name="logo_bg" value="default" id="logo_bg_1" checked>
+                    <label for="logo_bg_1"></label>
+                  </span>
+                  <span v-for="(num,index) in themeNums" :key="index">
+                    <input type="radio" name="logo_bg" v-bind:value="'color_'+[num]" v-bind:id="'logo_bg_'+[num]">
+                    <label v-bind:for="'logo_bg_'+[num]"></label>
+                  </span>
+                </li>
+                <li class="drop-title"><p>头部</p></li>
+                <li class="drop-skin-li clearfix">
+                  <span class="inverse">
+                    <input type="radio" name="header_bg" value="default" id="header_bg_1" checked>
+                    <label for="header_bg_1"></label>
+                  </span>
+                  <span v-for="(num,index) in themeNums" :key="index">
+                    <input type="radio" name="header_bg" v-bind:value="'color_'+[num]" v-bind:id="'header_bg_'+[num]">
+                    <label v-bind:for="'header_bg_'+[num]"></label>
+                  </span>
+                </li>
+                <li class="drop-title"><p>侧边栏</p></li>
+                <li class="drop-skin-li clearfix">
+                  <span class="inverse">
+                    <input type="radio" name="sidebar_bg" value="default" id="sidebar_bg_1" checked>
+                    <label for="sidebar_bg_1"></label>
+                  </span>
+                  <span v-for="(num,index) in themeNums" :key="index">
+                    <input type="radio" name="sidebar_bg" v-bind:value="'color_'+[num]" v-bind:id="'sidebar_bg_'+[num]">
+                    <label v-bind:for="'sidebar_bg_'+[num]"></label>
+                  </span>
+                </li>
+              </ul>
+            </li>
+            <!--切换主题配色-->
+          </ul>
+
+        </div>
+      </nav>
+
+    </header>
+    <!--End 头部信息-->
+
+    <!--页面主要内容-->
+    <main class="lyear-layout-content">
+
+      <div class="container-fluid">
+
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card">
+              <div class="card-toolbar clearfix" id="curdFun">
+                <div class="toolbar-btn-action col-md-6">
+                  <span class="btn btn-primary m-r-5" v-on:click="app.productOne={}"
+                        data-toggle="modal" data-target="#exampleModal"><i class="mdi mdi-plus"></i> 新增</span>
+                  <span class="btn btn-success m-r-5" v-on:click="update(1)"><i class="mdi mdi-check"></i> 上架</span>
+                  <span class="btn btn-warning m-r-5" v-on:click="update(0)"><i class="mdi mdi-block-helper"></i> 下架</span>
+                  <span class="btn btn-danger" v-on:click="delMore()"><i class="mdi mdi-window-close"></i> 删除</span>
+                </div>
+                <div class="input-group col-md-6">
+                  <div class="input-group-btn">
+                    <button class="btn btn-default dropdown-toggle" id="search-btn"
+                            data-toggle="dropdown" type="button" aria-haspopup="true" aria-expanded="false">
+                      标题 <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li> <a tabindex="-1" href="javascript:void(0)" data-field="title">标题</a> </li>
+                      <li> <a tabindex="-1" href="javascript:void(0)" data-field="cat_name">栏目</a> </li>
+                    </ul>
+                  </div>
+                  <input type="text" class="form-control" v-model="keyword" v-on:keyup.enter="search(keyword)"
+                         name="keyword" placeholder="请输入名称">
+                  </div>
+                </div>
+              <div class="card-body" id="productList">
+
+                <div class="table-responsive">
+                  <table class="table table-bordered" >
+                    <thead>
+                      <tr>
+                        <th>
+                          <label class="lyear-checkbox checkbox-primary">
+                            <input type="checkbox" id="check-all"><span></span>
+                          </label>
+                        </th>
+                        <th>编号</th>
+                        <th>标题</th>
+                        <th>价格</th>
+                        <th>创建时间</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr v-for="(product, index) in products" :key="index">
+                        <td>
+                          <label class="lyear-checkbox checkbox-primary">
+                            <input type="checkbox" name="ids"
+                                   v-bind:value="[product.pid]"><span></span>
+                          </label>
+                        </td>
+                        <td>{{product.pid}}</td>
+                        <td>{{product.pname}}</td>
+                        <td>{{product.marketPrice}}</td>
+                        <td>{{product.pdate}}</td>
+                        <td v-if="product.pflag == '0'"><span class="text-danger">下架</span></td>
+                        <td v-else-if="product.pflag == '1'"><span class="text-success">上架</span></td>
+                        <td>
+                          <div class="btn-group">
+                            <span class="btn btn-xs btn-default" style="cursor: pointer" v-on:click="productOne=product"
+                                  title="编辑" data-toggle="modal" data-target="#exampleModal"><i class="mdi mdi-pencil"></i></span>
+                            <span class="btn btn-xs btn-default" style="cursor: pointer" v-on:click="delOne(product.pid)"
+                                  title="删除" data-toggle="tooltip"><i class="mdi mdi-window-close"></i></span>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <!--模态框-->
+                  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                          <h4 class="modal-title" id="exampleModalLabel">{{JSON.stringify(productOne)=='{}'?'新增商品':'修改商品'}}</h4>
+                        </div>
+                        <div class="modal-body">
+                          <form>
+                            <div class="form-group">
+                              <label for="recipient-name" class="control-label">标题:</label>
+                              <input type="text" class="form-control" id="recipient-name" v-model="productOne.pname">
+                            </div>
+                            <div class="form-group">
+                              <label for="message-text" class="control-label">价格：</label>
+                              <input type="text" class="form-control" id="message-text" v-model="productOne.marketPrice">
+                            </div>
+                          </form>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                          <button type="button" class="btn btn-primary" data-dismiss="modal"
+                                  v-on:click="save()">保存</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--模态框结束-->
+                </div>
+
+                <div class="form-group">
+                  <label for="select-page" style="float: left;margin-top: 40px"><b>每页条数:</b></label>
+                  <select v-model="pageSize" class="form-control" id="select-page"
+                          v-on:change="getProductList(1,pageSize),nowPage=1"
+                          style = "width:80px;height:30px;float: left;margin-top: 35px;"
+                          v-bind:title="['每页条数:'+pageSize]">
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                  </select>
+                </div>
+                  &nbsp;&nbsp;&nbsp;
+                  <ul class="pagination">
+                    <li :class="nowPage == '1'?'disabled':''"><span :style="nowPage != '1'?'cursor: pointer':''">«</span></li>
+                    <li v-for="(currentPage,index) in totalPages" :key="index"
+                        v-on:click="getProductList(currentPage,pageSize),nowPage=currentPage"
+                        :class="currentPage == nowPage? 'active':''">
+                      <span style="cursor: pointer">{{currentPage}}</span></li>
+
+                    <!--<li class="disabled"><span>...</span></li>-->
+                    <!--<li><a href="#">14452</a></li>-->
+                    <!--<li><a href="#">14453</a></li>-->
+                    <li :class="nowPage == lastPage?'disabled':''"><span :style="nowPage != lastPage?'cursor: pointer':''">»</span></li>
+                  </ul>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </main>
+    <!--End 页面主要内容-->
+  </div>
+</div>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/perfect-scrollbar.min.js"></script>
+<script type="text/javascript" src="js/main.min.js"></script>
+<!--本地的vue.js文件-->
+<script src="js/vue.min.js"></script>
+<script src="js/axios.min.js"></script>
+<script type="text/javascript">
+
+    var app = new Vue({
+        el:"#productList",
+        data:{
+            products:[],
+            productOne:{},
+            totalPages:[],
+            nowPage:1,
+            pageSize:10,
+            lastPage:1
+        },
+        methods:{
+            getProductList: function (nowPage,pageSize) {
+              var params = new URLSearchParams();
+              params.append('nowPage',nowPage);
+              params.append('pageSize',pageSize);
+              axios.post('./data/list',params).then(function (response) {
+//                  console.log(response);
+                  app.products = response.data[0];
+                  app.totalPages = response.data[1];
+                  app.lastPage = app.totalPages.length
+              }).catch(function (error) {
+                  console.log(error);
+              });
+          },
+          delOne:function (id) {
+              var params = new URLSearchParams();
+              params.append('id',id);
+              axios.post('./data/delOne',params).then(function (response) {
+//                  console.log(response.data);
+                  app.getProductList(app.nowPage,app.pageSize);
+              }).catch(function (error) {
+                  console.log(error);
+              });
+          },
+          save:function () {
+              axios.post('./data/add',app.productOne).then(function (response) {
+//                  console.log(response.data);
+                  app.getProductList(app.nowPage,app.pageSize);
+              }).catch(function (error) {
+                  console.log(error);
+              });
+          }
+        },
+//              beforecreated：el 和 data 并未初始化
+//              created:完成了 data 数据的初始化，el没有
+//              beforeMount：完成了 el 和 data 初始化
+//              mounted ：完成挂载
+        mounted: function () {
+            var params = new URLSearchParams();
+            params.append('nowPage',1);
+            params.append('pageSize',10);
+            axios.post('./data/list',params).then(function (response) {
+//                console.log(response);
+                app.products = response.data[0];
+                app.totalPages = response.data[1];
+                app.lastPage = app.totalPages.length
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
+    });
+
+
+    var curd = new Vue({
+        el:"#curdFun",
+        data:{
+            ids:[],
+            keyword:""
+        },
+        methods:{
+            update:function (num) {
+                curd.ids = [];
+                $('input[name="ids"]:checked').each(function(i){
+                    curd.ids[i] =$(this).val()
+                });
+                var params = new URLSearchParams();
+                params.append('ids',curd.ids);
+                params.append('num',num);
+                axios.post('./data/update',params).then(function (response) {
+//                    console.log(response.data);
+                    app.getProductList(app.nowPage,app.pageSize);
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            },
+            delMore:function () {
+                curd.ids = [];
+                 $('input[name="ids"]:checked').each(function(i){
+                     curd.ids[i] =$(this).val()
+                });
+                var params = new URLSearchParams();
+                params.append('ids',curd.ids);
+                axios.post('./data/delMore',params).then(function (response) {
+                  console.log(response.data);
+                  app.getProductList(app.nowPage,app.pageSize);
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            },
+            search:function (keyword) {
+                var params = new URLSearchParams();
+                params.append('keyword',keyword);
+                axios.post('./data/search',params).then(function (response) {
+                    console.log(response);
+                    app.products = response.data[0];
+                    app.totalPages = response.data[1];
+                    app.lastPage = app.totalPages.length
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            }
+
+        }
+    });
+
+    new Vue({
+        el:"#themeColor",
+        data:{
+            themeNums:[2,3,4,5,6,7,8]
+        }
+    });
+$(function(){
+    $('.search-bar .dropdown-menu a').click(function() {
+        var field = $(this).data('field') || '';
+        $('#search-field').val(field);
+        $('#search-btn').html($(this).text() + ' <span class="caret"></span>');
+    });
+});
+
+</script>
+</body>
+</html>

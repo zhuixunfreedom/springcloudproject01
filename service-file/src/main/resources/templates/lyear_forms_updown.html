@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>表单 - 光年(Light Year Admin)后台管理系统模板</title>
+<link rel="icon" href="favicon.ico" type="image/ico">
+<meta name="keywords" content="LightYear,光年,后台模板,后台管理系统,光年HTML模板">
+<meta name="description" content="LightYear是一个基于Bootstrap v3.3.7的后台管理系统的HTML模板。">
+<meta name="author" content="yinqi">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/materialdesignicons.min.css" rel="stylesheet">
+<link href="css/style.min.css" rel="stylesheet">
+</head>
+  
+<body>
+<div class="lyear-layout-web">
+  <div class="lyear-layout-container">
+    <!--左侧导航-->
+    <aside class="lyear-layout-sidebar">
+       
+      <!-- logo -->
+      <div id="logo" class="sidebar-header">
+        <a href="index.html"><img src="images/logo-sidebar.png" title="LightYear" alt="LightYear" /></a>
+      </div>
+      <div class="lyear-layout-sidebar-scroll">
+        
+        <nav class="sidebar-main">
+          <ul class="nav nav-drawer">
+
+            <!--自定义添加模块-->
+            <li class="nav-item nav-item-has-subnav active open">
+              <a href="javascript:void(0)"><i class="mdi mdi-file-outline"></i> 自定义模块</a>
+              <ul class="nav nav-subnav">
+                <li> <a href="../product/page">商品列表</a> </li>
+                <li> <a href="../function/page">功能列表</a> </li>
+                <li class="active"> <a href="../file/page">上传/下载</a> </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+        
+        <div class="sidebar-footer">
+          <p class="copyright">Copyright &copy; 2019. <a target="_blank" href="http://lyear.itshubao.com">IT书包</a> All rights reserved.</p>
+        </div>
+      </div>
+      
+    </aside>
+    <!--End 左侧导航-->
+    
+    <!--头部信息-->
+    <header class="lyear-layout-header">
+      
+      <nav class="navbar navbar-default">
+        <div class="topbar">
+          
+          <div class="topbar-left">
+            <div class="lyear-aside-toggler">
+              <span class="lyear-toggler-bar"></span>
+              <span class="lyear-toggler-bar"></span>
+              <span class="lyear-toggler-bar"></span>
+            </div>
+            <span class="navbar-page-title"> 自定义模块 - 上传/下载 </span>
+          </div>
+          
+          <ul class="topbar-right">
+            <li class="dropdown dropdown-profile">
+              <a href="javascript:void(0)" data-toggle="dropdown">
+                <img class="img-avatar img-avatar-48 m-r-10" src="images/users/avatar.jpg" alt="笔下光年" />
+                <span>笔下光年 <span class="caret"></span></span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-right">
+                <li> <a href="lyear_pages_profile.html"><i class="mdi mdi-account"></i> 个人信息</a> </li>
+                <li> <a href="lyear_pages_edit_pwd.html"><i class="mdi mdi-lock-outline"></i> 修改密码</a> </li>
+                <li> <a href="javascript:void(0)"><i class="mdi mdi-delete"></i> 清空缓存</a></li>
+                <li class="divider"></li>
+                <li> <a href="lyear_pages_login.html"><i class="mdi mdi-logout-variant"></i> 退出登录</a> </li>
+              </ul>
+            </li>
+            <!--切换主题配色-->
+		    <li class="dropdown dropdown-skin" id="themeColor">
+			  <span data-toggle="dropdown" class="icon-palette"><i class="mdi mdi-palette"></i></span>
+			  <ul class="dropdown-menu dropdown-menu-right" data-stopPropagation="true">
+                <li class="drop-title"><p>主题</p></li>
+                <li class="drop-skin-li clearfix">
+                  <span class="inverse">
+                    <input type="radio" name="site_theme" value="default" id="site_theme_1" checked>
+                    <label for="site_theme_1"></label>
+                  </span>
+                  <span>
+                    <input type="radio" name="site_theme" value="dark" id="site_theme_2">
+                    <label for="site_theme_2"></label>
+                  </span>
+                  <span>
+                    <input type="radio" name="site_theme" value="translucent" id="site_theme_3">
+                    <label for="site_theme_3"></label>
+                  </span>
+                </li>
+			    <li class="drop-title"><p>LOGO</p></li>
+				<li class="drop-skin-li clearfix">
+                  <span class="inverse">
+                    <input type="radio" name="logo_bg" value="default" id="logo_bg_1" checked>
+                    <label for="logo_bg_1"></label>
+                  </span>
+                  <span v-for="(num,index) in themeNums" :key="index">
+                    <input type="radio" name="logo_bg" v-bind:value="'color_'+[num]" v-bind:id="'logo_bg_'+[num]">
+                    <label v-bind:for="'logo_bg_'+[num]"></label>
+                  </span>
+				</li>
+				<li class="drop-title"><p>头部</p></li>
+				<li class="drop-skin-li clearfix">
+                  <span class="inverse">
+                    <input type="radio" name="header_bg" value="default" id="header_bg_1" checked>
+                    <label for="header_bg_1"></label>                      
+                  </span>
+                  <span v-for="(num,index) in themeNums" :key="index">
+                    <input type="radio" name="header_bg" v-bind:value="'color_'+[num]" v-bind:id="'header_bg_'+[num]">
+                    <label v-bind:for="'header_bg_'+[num]"></label>
+                  </span>
+				</li>
+				<li class="drop-title"><p>侧边栏</p></li>
+				<li class="drop-skin-li clearfix">
+                  <span class="inverse">
+                    <input type="radio" name="sidebar_bg" value="default" id="sidebar_bg_1" checked>
+                    <label for="sidebar_bg_1"></label>
+                  </span>
+                  <span v-for="(num,index) in themeNums" :key="index">
+                    <input type="radio" name="sidebar_bg" v-bind:value="'color_'+[num]" v-bind:id="'sidebar_bg_'+[num]">
+                    <label v-bind:for="'sidebar_bg_'+[num]"></label>
+                  </span>
+				</li>
+			  </ul>
+			</li>
+            <!--切换主题配色-->
+          </ul>
+          
+        </div>
+      </nav>
+      
+    </header>
+    <!--End 头部信息-->
+    
+    <!--页面主要内容-->
+    <main class="lyear-layout-content">
+      
+      <div class="container-fluid">
+
+        <div class="row" id="updown">
+          <div class="col-md-12">
+            <!--上传信息-->
+            <div class="card form-horizontal">
+              <div class="card-header"><h4>文件上传/下载</h4></div>
+              <div class="card-body">
+                <div class="form-group">
+                  <div class="col-md-6">
+                    <input id="inputFiles" class="btn btn-secondary" type="file" multiple/>
+                  </div>
+                  <div class="col-md-6">
+                    <button class="btn btn-primary"  type="button" v-on:click="upload()">上传</button>
+                  </div>
+                  <!--上传进度条-->
+                  <div class="col-md-12" v-if="progressRate != 0">
+                    <b>上传进度: </b><b>{{progressRate}}%</b>&nbsp;&nbsp;&nbsp;
+                    <b>上传状态: </b><b v-bind:style="'color: '+
+                    [uploadStatus==''?'greenyellow':uploadStatus=='success'?'deepskyblue':'red']">
+                    {{uploadStatus==''?'上传中···(请勿退出)':uploadStatus=='success'?'上传成功':'上传失败'}}</b>
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-striped active"
+                           v-bind:style="'width: '+[progressRate]+'%'">{{progressRate}}%
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--下载-->
+                <div class="form-group">
+                  <div class="col-md-6">
+                    <div class="input-group m-b-10">
+                      <span class="input-group-addon" id="basic-addon3">下载网址:</span>
+                      <input class="form-control" type="text" v-model="url"
+                             placeholder="请输入下载网址"/>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <a class="btn btn-primary" v-on:click="downloadUrl()">下载</a>
+                    <b v-bind:style="'color: '+
+                    [downloadStatus==''?'black':downloadStatus=='success'?'deepskyblue':'red']">
+                      {{downloadStatus==''?'可下载文件到后台':
+                      downloadStatus=='success'?'后台下载文件成功':'后台下载文件失败'}}</b>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--已上传文件列表-->
+            <div class="card form-horizontal">
+              <div class="card-header"><h4>后台文件列表</h4></div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table table-bordered" >
+                    <thead>
+                    <tr>
+                      <th>
+                        <label class="lyear-checkbox checkbox-primary">
+                          <input type="checkbox" id="check-all"><span></span>
+                        </label>
+                      </th>
+                      <th>编号</th>
+                      <th>文件名</th>
+                      <th>创建时间</th>
+                      <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr v-for="(file, index) in files" :key="index">
+                      <td>
+                        <label class="lyear-checkbox checkbox-primary">
+                          <input type="checkbox" name="ids"
+                                 v-bind:value="[file.id]"><span></span>
+                        </label>
+                      </td>
+                      <td>{{file.id}}</td>
+                      <td>{{file.fileName}}</td>
+                      <td>{{file.createTime}}</td>
+                      <td>
+                        <div class="btn-group">
+                          <!--download属性无法跨域-->
+                          <!--因为保存的文件夹为未编译的文件位置所以上传的文件暂时无法下载，
+                              等待上线后修改文件保存路径即可-->
+                          <a class="btn btn-primary" v-bind:href="file.filePath"
+                             type="button" v-bind:download="file.fileName">下载</a>
+                          <button class="btn btn-danger" v-on:click="delFile(file.id)" type="button">删除</button>
+                        </div>
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+
+                  <!--模态框-->
+                  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                          <h4 class="modal-title" id="exampleModalLabel">标题</h4>
+                        </div>
+                        <div class="modal-body">
+                          <form>
+                            <div class="form-group">
+                              <label for="recipient-name" class="control-label">标题:</label>
+                              <input type="text" class="form-control" id="recipient-name" >
+                            </div>
+                          </form>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--模态框结束-->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      
+    </main>
+    <!--End 页面主要内容-->
+  </div>
+</div>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/perfect-scrollbar.min.js"></script>
+<script type="text/javascript" src="js/main.min.js"></script>
+
+<!--本地的vue.js文件-->
+<script src="js/vue.min.js"></script>
+<script src="js/axios.min.js"></script>
+<script type="text/javascript">
+
+    new Vue({
+        el:"#themeColor",
+        data:{
+            themeNums:[2,3,4,5,6,7,8]
+        }
+    });
+    var updown = new Vue({
+        el:"#updown",
+        data:{
+            files:[],
+            url:"",
+            progressRate:0,
+            uploadStatus:"",
+            downloadStatus:""
+        },
+        methods:{
+            getList:function () {
+                axios.post('./data/list').then(function (response) {
+//                    console.log(response);
+                    updown.files = response.data;
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            },
+//            下载
+            downloadUrl:function () {
+                var params = new URLSearchParams();
+                params.append('url',updown.url);
+                axios.post("./data/download",params,{
+                    processData:false
+                }).then(function (response) {
+//                    console.log(response.data);
+                    updown.downloadStatus = response.data;
+//                    下载后获取数据列表
+                    updown.getList();
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            },
+//            上传
+            upload:function () {
+                var file = $("#inputFiles").get(0);
+                var formData = new FormData();
+                for (var i=0;i<file.files.length;i++){
+                    formData.append('file'+i,file.files[i]);
+                }
+                var config = {
+                    headers: { 'Content-Type': 'multipart/form-data' },
+                    onUploadProgress: function (e) {
+                        updown.progressRate = (e.loaded/e.total)*100;
+//                        console.log("进度："+updown.progressRate+"%");
+                    }
+                };
+                axios.post("./data/upload", formData,config,{
+                    dataType : 'JSON',
+                    processData:false,// 告诉axios不要去处理发送的数据(重要参数)
+                    contentType: false // 告诉axios不要去设置Content-Type请求头
+                }).then(function (response) {
+//                    console.log(response.data);
+                    updown.uploadStatus = response.data;
+                    updown.progressRate = 0;
+//                    上传后获取数据列表
+                    updown.getList();
+                }).catch(function (error) {
+                  console.log(error);
+              });
+            },
+            delFile:function (id) {
+                var params = new URLSearchParams();
+                params.append('id',id);
+                axios.post('./data/delFile',params).then(function (response) {
+                    console.log(response.data);
+                    updown.getList();
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            }
+        },
+        mounted: function () {
+            axios.post('./data/list').then(function (response) {
+//                    console.log(response);
+                updown.files = response.data;
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
+    });
+</script>
+</body>
+</html>

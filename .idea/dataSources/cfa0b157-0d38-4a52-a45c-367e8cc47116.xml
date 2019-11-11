@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="test@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.4">
+    <root id="1"/>
+    <schema id="2" parent="1" name="test">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="day01"/>
+    <schema id="4" parent="1" name="day02"/>
+    <schema id="5" parent="1" name="db_case"/>
+    <schema id="6" parent="1" name="gjp"/>
+    <schema id="7" parent="1" name="information_schema"/>
+    <schema id="8" parent="1" name="kgcproject"/>
+    <schema id="9" parent="1" name="mysql"/>
+    <schema id="10" parent="1" name="pyg"/>
+    <schema id="11" parent="1" name="springdatajpa9502"/>
+    <schema id="12" parent="1" name="stone"/>
+    <schema id="13" parent="1" name="test1user"/>
+    <schema id="14" parent="1" name="testcar"/>
+    <schema id="15" parent="1" name="university627"/>
+    <schema id="16" parent="1" name="user01"/>
+    <table id="17" parent="2" name="a"/>
+    <table id="18" parent="2" name="account"/>
+    <table id="19" parent="2" name="filetable"/>
+    <table id="20" parent="2" name="order2"/>
+    <table id="21" parent="2" name="product"/>
+    <table id="22" parent="2" name="product2"/>
+    <table id="23" parent="2" name="tb_address"/>
+    <table id="24" parent="2" name="tb_areas">
+      <Comment>行政区域县区信息表</Comment>
+    </table>
+    <table id="25" parent="2" name="user"/>
+    <column id="26" parent="17" name="pid">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="27" parent="17" name="pnum">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="28" parent="17" name="sid">
+      <Position>3</Position>
+      <DataType>varchar(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="29" parent="18" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="30" parent="18" name="name">
+      <Position>2</Position>
+      <DataType>varchar(40)|0</DataType>
+    </column>
+    <column id="31" parent="18" name="money">
+      <Position>3</Position>
+      <DataType>float|0</DataType>
+    </column>
+    <key id="32" parent="18" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="33" parent="19" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="34" parent="19" name="file_name">
+      <Position>2</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="35" parent="19" name="creat_time">
+      <Position>3</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <key id="36" parent="19" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="37" parent="20" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="38" parent="20" name="orderNumber">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="39" parent="20" name="DepartureDate">
+      <Position>3</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="40" parent="20" name="DateOfApplication">
+      <Position>4</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="41" parent="20" name="Status">
+      <Position>5</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="42" parent="20" name="Pay">
+      <Position>6</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="43" parent="20" name="Operator">
+      <Position>7</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="44" parent="20" name="orderDesc">
+      <Position>8</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="45" parent="20" name="productId">
+      <Position>9</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="46" parent="20" name="productId">
+      <ColNames>productId</ColNames>
+    </index>
+    <key id="47" parent="20" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="48" parent="20" name="order2_ibfk_1">
+      <ColNames>productId</ColNames>
+      <RefSchemaName>test</RefSchemaName>
+      <RefTableName>product2</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="49" parent="21" name="pid">
+      <Position>1</Position>
+      <DataType>int(32)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="50" parent="21" name="pname">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="51" parent="21" name="market_price">
+      <Position>3</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="52" parent="21" name="shop_price">
+      <Position>4</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="53" parent="21" name="pimage">
+      <Position>5</Position>
+      <DataType>varchar(200)|0</DataType>
+    </column>
+    <column id="54" parent="21" name="pdate">
+      <Position>6</Position>
+      <DataType>date|0</DataType>
+    </column>
+    <column id="55" parent="21" name="is_hot">
+      <Position>7</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="56" parent="21" name="pdesc">
+      <Position>8</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="57" parent="21" name="pflag">
+      <Position>9</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="58" parent="21" name="cid">
+      <Position>10</Position>
+      <DataType>varchar(32)|0</DataType>
+    </column>
+    <index id="59" parent="21" name="sfk_0001">
+      <ColNames>cid</ColNames>
+    </index>
+    <key id="60" parent="21" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>pid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="61" parent="22" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="62" parent="22" name="productNumber">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="63" parent="22" name="productName">
+      <Position>3</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="64" parent="22" name="departureDate">
+      <Position>4</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="65" parent="22" name="departureCity">
+      <Position>5</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <column id="66" parent="22" name="status">
+      <Position>6</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="67" parent="22" name="price">
+      <Position>7</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="68" parent="22" name="productDesc">
+      <Position>8</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <key id="69" parent="22" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="70" parent="23" name="id">
+      <Position>1</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="71" parent="23" name="user_id">
+      <Position>2</Position>
+      <Comment>用户ID</Comment>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="72" parent="23" name="province_id">
+      <Position>3</Position>
+      <Comment>省</Comment>
+      <DataType>varchar(10)|0</DataType>
+    </column>
+    <column id="73" parent="23" name="city_id">
+      <Position>4</Position>
+      <Comment>市</Comment>
+      <DataType>varchar(10)|0</DataType>
+    </column>
+    <column id="74" parent="23" name="town_id">
+      <Position>5</Position>
+      <Comment>县/区</Comment>
+      <DataType>varchar(10)|0</DataType>
+    </column>
+    <column id="75" parent="23" name="mobile">
+      <Position>6</Position>
+      <Comment>手机</Comment>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="76" parent="23" name="address">
+      <Position>7</Position>
+      <Comment>详细地址</Comment>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="77" parent="23" name="contact">
+      <Position>8</Position>
+      <Comment>联系人</Comment>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="78" parent="23" name="is_default">
+      <Position>9</Position>
+      <Comment>是否是默认 1默认 0否</Comment>
+      <DataType>varchar(1)|0</DataType>
+    </column>
+    <column id="79" parent="23" name="notes">
+      <Position>10</Position>
+      <Comment>备注</Comment>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="80" parent="23" name="create_date">
+      <Position>11</Position>
+      <Comment>创建日期</Comment>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="81" parent="23" name="alias">
+      <Position>12</Position>
+      <Comment>别名</Comment>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <key id="82" parent="23" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="83" parent="24" name="id">
+      <Position>1</Position>
+      <Comment>唯一ID</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="84" parent="24" name="areaid">
+      <Position>2</Position>
+      <Comment>区域ID</Comment>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="85" parent="24" name="area">
+      <Position>3</Position>
+      <Comment>区域名称</Comment>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="86" parent="24" name="cityid">
+      <Position>4</Position>
+      <Comment>城市ID</Comment>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="87" parent="24" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="88" parent="25" name="name">
+      <Position>1</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="89" parent="25" name="password">
+      <Position>2</Position>
+      <DataType>int(20)|0</DataType>
+    </column>
+    <column id="90" parent="25" name="id">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <key id="91" parent="25" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>

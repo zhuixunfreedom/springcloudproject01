@@ -1,0 +1,26 @@
+server:
+  port: 9001
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:9000/eureka
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+spring:
+  application:
+    name: service-login
+  datasource:
+    #JDBC基本配置
+      url: jdbc:mysql://127.0.0.1:3306/user01?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8&useSSL=false
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: root
+      password: root
+    #连接池类型以及相关配置
+    #  Druid功能最好，资料较多
+      type: com.alibaba.druid.pool.DruidDataSource
+# 设置时间格式
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+

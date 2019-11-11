@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>表单 - 光年(Light Year Admin)后台管理系统模板</title>
+<link rel="icon" href="favicon.ico" type="image/ico">
+<meta name="keywords" content="LightYear,光年,后台模板,后台管理系统,光年HTML模板">
+<meta name="description" content="LightYear是一个基于Bootstrap v3.3.7的后台管理系统的HTML模板。">
+<meta name="author" content="yinqi">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/materialdesignicons.min.css" rel="stylesheet">
+<link href="css/style.min.css" rel="stylesheet">
+</head>
+  
+<body>
+<div class="lyear-layout-web">
+  <div class="lyear-layout-container">
+    <!--左侧导航-->
+    <aside class="lyear-layout-sidebar">
+       
+      <!-- logo -->
+      <div id="logo" class="sidebar-header">
+        <a href="index.html"><img src="images/logo-sidebar.png" title="LightYear" alt="LightYear" /></a>
+      </div>
+      <div class="lyear-layout-sidebar-scroll">
+        
+        <nav class="sidebar-main">
+          <ul class="nav nav-drawer">
+
+
+            <!--自定义添加模块-->
+            <li class="nav-item nav-item-has-subnav active open">
+              <a href="javascript:void(0)"><i class="mdi mdi-file-outline"></i> 自定义模块</a>
+              <ul class="nav nav-subnav">
+                <li> <a href="../product/page">商品列表</a> </li>
+                <li class="active"> <a href="../function/page">功能列表</a> </li>
+                <li> <a href="../file/page">上传/下载</a> </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+        
+        <div class="sidebar-footer">
+          <p class="copyright">Copyright &copy; 2019. <a target="_blank" href="http://lyear.itshubao.com">IT书包</a> All rights reserved.</p>
+        </div>
+      </div>
+      
+    </aside>
+    <!--End 左侧导航-->
+    
+    <!--头部信息-->
+    <header class="lyear-layout-header">
+      
+      <nav class="navbar navbar-default">
+        <div class="topbar">
+          
+          <div class="topbar-left">
+            <div class="lyear-aside-toggler">
+              <span class="lyear-toggler-bar"></span>
+              <span class="lyear-toggler-bar"></span>
+              <span class="lyear-toggler-bar"></span>
+            </div>
+            <span class="navbar-page-title"> 自定义模块 - 功能列表 </span>
+          </div>
+          
+          <ul class="topbar-right">
+            <li class="dropdown dropdown-profile">
+              <a href="javascript:void(0)" data-toggle="dropdown">
+                <img class="img-avatar img-avatar-48 m-r-10" src="images/users/avatar.jpg" alt="笔下光年" />
+                <span>笔下光年 <span class="caret"></span></span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-right">
+                <li> <a href="lyear_pages_profile.html"><i class="mdi mdi-account"></i> 个人信息</a> </li>
+                <li> <a href="lyear_pages_edit_pwd.html"><i class="mdi mdi-lock-outline"></i> 修改密码</a> </li>
+                <li> <a href="javascript:void(0)"><i class="mdi mdi-delete"></i> 清空缓存</a></li>
+                <li class="divider"></li>
+                <li> <a href="lyear_pages_login.html"><i class="mdi mdi-logout-variant"></i> 退出登录</a> </li>
+              </ul>
+            </li>
+            <!--切换主题配色-->
+		    <li class="dropdown dropdown-skin" id="themeColor">
+			  <span data-toggle="dropdown" class="icon-palette"><i class="mdi mdi-palette"></i></span>
+			  <ul class="dropdown-menu dropdown-menu-right" data-stopPropagation="true">
+                <li class="drop-title"><p>主题</p></li>
+                <li class="drop-skin-li clearfix">
+                  <span class="inverse">
+                    <input type="radio" name="site_theme" value="default" id="site_theme_1" checked>
+                    <label for="site_theme_1"></label>
+                  </span>
+                  <span>
+                    <input type="radio" name="site_theme" value="dark" id="site_theme_2">
+                    <label for="site_theme_2"></label>
+                  </span>
+                  <span>
+                    <input type="radio" name="site_theme" value="translucent" id="site_theme_3">
+                    <label for="site_theme_3"></label>
+                  </span>
+                </li>
+			    <li class="drop-title"><p>LOGO</p></li>
+				<li class="drop-skin-li clearfix">
+                  <span class="inverse">
+                    <input type="radio" name="logo_bg" value="default" id="logo_bg_1" checked>
+                    <label for="logo_bg_1"></label>
+                  </span>
+                  <span v-for="(num,index) in themeNums" :key="index">
+                    <input type="radio" name="logo_bg" v-bind:value="'color_'+[num]" v-bind:id="'logo_bg_'+[num]">
+                    <label v-bind:for="'logo_bg_'+[num]"></label>
+                  </span>
+				</li>
+				<li class="drop-title"><p>头部</p></li>
+				<li class="drop-skin-li clearfix">
+                  <span class="inverse">
+                    <input type="radio" name="header_bg" value="default" id="header_bg_1" checked>
+                    <label for="header_bg_1"></label>                      
+                  </span>
+                  <span v-for="(num,index) in themeNums" :key="index">
+                    <input type="radio" name="header_bg" v-bind:value="'color_'+[num]" v-bind:id="'header_bg_'+[num]">
+                    <label v-bind:for="'header_bg_'+[num]"></label>
+                  </span>
+				</li>
+				<li class="drop-title"><p>侧边栏</p></li>
+				<li class="drop-skin-li clearfix">
+                  <span class="inverse">
+                    <input type="radio" name="sidebar_bg" value="default" id="sidebar_bg_1" checked>
+                    <label for="sidebar_bg_1"></label>
+                  </span>
+                  <span v-for="(num,index) in themeNums" :key="index">
+                    <input type="radio" name="sidebar_bg" v-bind:value="'color_'+[num]" v-bind:id="'sidebar_bg_'+[num]">
+                    <label v-bind:for="'sidebar_bg_'+[num]"></label>
+                  </span>
+				</li>
+			  </ul>
+			</li>
+            <!--切换主题配色-->
+          </ul>
+          
+        </div>
+      </nav>
+      
+    </header>
+    <!--End 头部信息-->
+    
+    <!--页面主要内容-->
+    <main class="lyear-layout-content">
+      
+      <div class="container-fluid">
+
+        <div class="row" id="functions">
+          <div class="col-md-12">
+            <!--图片验证-->
+            <div class="card form-horizontal">
+              <div class="card-header"><h4>获取图片验证码</h4></div>
+              <div class="card-body">
+                <div class="form-group">
+                  <label class="col-md-3 control-label" for="example-hf-image">验证码</label>
+                  <div class="col-md-4">
+                    <input class="form-control" type="text" id="example-hf-image" name="example-hf-image"
+                           placeholder="请输入图片验证码" v-model="ImgCode">
+                  </div>
+                  <div class="col-md-3">
+                    <img v-bind:src="'data:image/jpg;base64,'+[ImgCodeBase64]" v-on:click="getImgCode()" alt="验证码" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-md-9 col-md-offset-3">
+                    <button class="btn btn-primary" type="button" v-on:click="verificationImageCode(ImgCode)"
+                            data-toggle="modal" data-target="#exampleModal">验证</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--短信验证-->
+            <div class="card form-horizontal">
+              <div class="card-header"><h4>获取短信验证码</h4></div>
+              <div class="card-body">
+                <div class="form-group">
+                  <label class="col-md-3 control-label" for="example-hf-phone">手机号</label>
+                  <div class="col-md-7">
+                    <input class="form-control" type="text" id="example-hf-phone" name="example-hf-phone"
+                           placeholder="请输入手机号" v-model="phone">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-3 control-label" for="example-hf-code">验证码</label>
+                  <div class="col-md-7">
+                    <input class="form-control" type="text" id="example-hf-code" name="example-hf-code"
+                           placeholder="请输入短信验证码" v-model="code">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-md-9 col-md-offset-3">
+                    <button class="btn btn-primary" type="button" v-on:click="verification(phone,code)"
+                            data-toggle="modal" data-target="#exampleModal">验证</button>
+                    <button class="btn" type="button" v-on:click="timing(),getcode()"
+                            v-bind:class="value!=60?'disabled btn-secondary':'btn-primary'">
+                      {{value!=60?value:'获取验证码'}}</button>
+                    <span v-if="smsStatus=='success'" class="text-success">&nbsp;&nbsp;<b>短信发送成功</b></span>
+                    <span v-else-if="smsStatus=='failure'" class="text-danger">&nbsp;&nbsp;<b>短信发送失败</b></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card form-horizontal">
+              <div class="card-header"><h4>发送邮件(QQ邮箱)</h4></div>
+              <div class="card-body">
+                <div class="form-group">
+                  <label class="col-md-3 control-label" for="example-hf-email">邮箱</label>
+                  <div class="col-md-7">
+                    <input class="form-control" type="text" id="example-hf-email" name="example-hf-email"
+                           placeholder="请输入对方邮箱" v-model="emailObj.email">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-3 control-label" for="example-hf-email-header">邮件标题</label>
+                  <div class="col-md-7">
+                    <input class="form-control" type="text" id="example-hf-email-header" name="example-hf-email-header"
+                           placeholder="请输入邮件标题" v-model="emailObj.emailHeader">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-3 control-label" for="example-textarea-input">邮件内容</label>
+                  <div class="col-md-7">
+                    <textarea class="form-control" id="example-textarea-input" name="example-textarea-input"
+                              rows="6" v-model="emailObj.emailBody"
+                              placeholder="请输入邮件内容&#10;支持html格式&#10;例如：<p>你好,<b>很高兴见到你!</b></p>">
+                    </textarea>
+                    <!--&#10;是unicode字符中的换行符-->
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-md-7 col-md-offset-3">
+                    <button class="btn btn-primary" type="button" v-on:click="sendEmail()">发送</button>
+                    <label class="lyear-switch switch-solid switch-primary">
+                      <b>开启html功能:</b>
+                      <input id="htmlCheck" type="checkbox" checked="checked">
+                      <span></span>
+                    </label>
+                    <span v-if="emailObj.sendStatus=='success'" class="text-success">&nbsp;&nbsp;<b>邮件发送成功</b></span>
+                    <span v-else-if="emailObj.sendStatus=='failure'" class="text-danger">&nbsp;&nbsp;<b>邮件发送失败</b></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--身份验证-->
+            <div class="card form-horizontal">
+              <div class="card-header"><h4>获取身份信息</h4></div>
+              <div class="card-body">
+                <div class="form-group">
+                  <label class="col-md-3 control-label" for="example-hf-idCard">请上传身份证正面照</label>
+                  <div class="col-md-4">
+                    <input class="form-control" type="file" id="example-hf-idCard" name="example-hf-image">
+                  </div>
+                  <div class="col-md-3">
+                    <button class="btn btn-primary" type="button" v-on:click="uploadIdCard()">上传</button>
+                    <b>{{personStatus==''?'':personStatus=='success'?'上传成功':'上传失败'}}</b>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-3 control-label" for="example-hf-idCard-msg">身份证信息</label>
+                  <div class="col-md-7">
+                    <textarea class="form-control"  name="example-textarea-input"
+                              rows="10"  disabled v-if="JSON.stringify(personObj) == '{}'">
+                    </textarea>
+                    <textarea class="form-control" id="example-hf-idCard-msg" name="example-textarea-input"
+                              rows="10"  disabled v-else-if="JSON.stringify(personObj) != '{}'">姓名:{{personObj.person_NAME}}&#10;性别：{{personObj.person_SEX}}&#10;身份证号：{{personObj.person_ID}}&#10;出生日期：{{personObj.person_BIRTH}}&#10;星座：{{personObj.person_SIGN}}&#10;属性：{{personObj.person_ANIMAL}}&#10;居住省份：{{personObj.person_LIVING_PROVINCE}}&#10;出生区域：{{personObj.person_BIRTH_DISTRICT}}&#10;出生城市：{{personObj.person_BIRTH_CITY}}&#10;居住地址：{{personObj.person_ADDRESS}}&#10;
+                    </textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-md-9 col-md-offset-3">
+                    <button class="btn btn-primary" type="button" v-on:click="verificationIDCard(personObj.person_NAME,personObj.person_ID)"
+                            data-toggle="modal" data-target="#exampleModal">验证</button>
+                    <button class="btn btn-primary" type="button" v-on:click="getIdCardMsg()" >获取身份信息</button>
+                    <b>{{personVerificationStatus=='success'?'验证成功':personVerificationStatus=='failure'?'验证失败':''}}</b>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--模态框-->
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="exampleModalLabel">验证信息</h4>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="form-group">
+                      <h3 v-if="vfStatus=='success'" class="text-success">验证成功</h3>
+                      <h3 v-else-if="vfStatus=='failure'" class="text-danger">验证失败</h3>
+                      <!--<h3 v-else class="text-danger">请等待···</h3>-->
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--模态框结束-->
+        </div>
+        
+      </div>
+      
+    </main>
+    <!--End 页面主要内容-->
+  </div>
+</div>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/perfect-scrollbar.min.js"></script>
+<script type="text/javascript" src="js/main.min.js"></script>
+
+<!--本地的vue.js文件-->
+<script src="js/vue.min.js"></script>
+<script src="js/axios.min.js"></script>
+<script type="text/javascript">
+
+    new Vue({
+        el:"#themeColor",
+        data:{
+            themeNums:[2,3,4,5,6,7,8]
+        }
+    });
+    var funs = new Vue({
+        el:"#functions",
+        data:{
+            value:60,
+            phone:"",
+            code:"",
+            ImgCodeBase64:"",
+            ImgCode:"",
+            smsStatus:"",
+            vfStatus:"",
+            emailObj:{
+                email:"",
+                emailHeader:"",
+                emailBody:"",
+                htmlStatus:"",
+                sendStatus:""
+            },
+            personStatus:"",
+            personObj:{},
+            personVerificationStatus:""
+        },
+        methods:{
+            timing:function () {
+                var fun1 = setInterval(function () {
+                    funs.value --;
+                    if (funs.value===0) {
+                        funs.value = 60;
+                        clearInterval(fun1)
+                    }
+                },1000)
+            },
+            getcode:function () {
+                var params = new URLSearchParams();
+                params.append('phone',funs.phone);
+                axios.post('./functions/getcode',params).then(function (response) {
+                    funs.smsStatus = response.data;
+                    if (funs.smsStatus === 'failure') funs.value = 30;
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            },
+            getImgCode:function () {
+                axios.post('./functions/getImageCode').then(function (response) {
+                    funs.ImgCodeBase64 = response.data;
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            },
+            verification:function (phone,code) {
+                var params = new URLSearchParams();
+                params.append('phone',phone);
+                params.append('code',code);
+                axios.post('./functions/sms',params).then(function (response) {
+                    funs.vfStatus = response.data;
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            },
+            verificationImageCode:function (imgCode) {
+                var params = new URLSearchParams();
+                params.append('imgCode',imgCode);
+                axios.post('./functions/verificationImageCode',params).then(function (response) {
+                    funs.vfStatus = response.data;
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            },
+            sendEmail:function () {
+                if($('#htmlCheck').is(':checked')) {
+                   funs.emailObj.htmlStatus='true'
+                }else {
+                    funs.emailObj.htmlStatus='false'
+                }
+                //email对象
+                var params = new URLSearchParams();
+                params.append('email',funs.emailObj.email);
+                params.append('emailHeader',funs.emailObj.emailHeader);
+                params.append('emailBody',funs.emailObj.emailBody);
+                params.append('htmlStatus',funs.emailObj.htmlStatus);
+                axios.post('./functions/sendEmail',params).then(function (response) {
+//                console.log(response);
+                    funs.emailObj.sendStatus = response.data;
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            },
+            uploadIdCard:function () {
+                var file = $("#example-hf-idCard").get(0).files[0];
+                var formData = new FormData();
+                formData.append("idCard",file);
+                axios.post('./functions/uploadIdCard',formData).then(function (response) {
+                    if (response.status === 200) funs.personStatus='success';
+                    else funs.personStatus='failure';
+//                    console.log(response);
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            },
+            getIdCardMsg:function () {
+                axios.post('./functions/getIdCardMsg').then(function (response) {
+                    console.log(response);
+                    funs.personObj = response.data;
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            },
+            verificationIDCard:function (name,id) {
+                var params = new URLSearchParams();
+                params.append('name',name);
+                params.append('id',id);
+                axios.post('./functions/verificationIDCard',params).then(function (response) {
+//                    console.log(response);
+                    if (response.status === 200) {
+                        funs.personVerificationStatus='success';
+                        funs.vfStatus='success';
+                    }
+                    else {
+                        funs.personVerificationStatus='failure';
+                        funs.vfStatus='failure';
+                    }
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            }
+        },
+        mounted:function () {
+            axios.post('./functions/getImageCode').then(function (response) {
+//                console.log(response);
+                funs.ImgCodeBase64 = response.data;
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
+    });
+</script>
+</body>
+</html>

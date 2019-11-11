@@ -1,0 +1,53 @@
+
+server:
+  port: 8080
+
+spring:
+#遇见同名允许覆盖
+#  main:
+#    allow-bean-definition-overriding: true
+
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 100MB
+  application:
+    name: springcloud-zuul-gateway
+
+#  feign开启熔断器处理时需要配置
+feign:
+  hystrix:
+    enabled: true
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:9000/eureka
+zuul:
+  host:
+    max-per-route-connections: 60000
+    socket-timeout-millis: 60000
+    connect-timeout-millis: 60000
+  ignored-services: service-product,service-function,service-file
+  routes:
+    product:
+      path: /product/**
+      serviceId: service-product
+    function:
+      path: /function/**
+      serviceId: service-function
+    file:
+      path: /file/**
+      serviceId: service-file
+
+#    edit:
+#      path: /edit/**
+#      serviceId: order-info
+#原始访问ip地址
+#zuul.routes.{route}.path：自定义路由的规则，通过path配置路径进行过滤；
+#zuul.routes.{route}.url: 自定义路由的规则，访问上述的路径会转发到该配置的地址；
+
+#访问服务名称
+#zuul.routes.api-a.path./api-a/**.serviceId: service-ribbon
+#zuul.routes.api-b.path./api-b/**.serviceId: service-ribbon
+#以/api-a/ 开头的请求都转发给service-ribbon服务；以/api-b/开头的请求都转发给service-feign服务
+
